@@ -348,22 +348,184 @@
 }
 
 /*******************************/
-
+html,
+body {
+  overflow-x: hidden; /* Mencegah scroll horizontal */
+}
 body {
   font-family: forum, Helvetica, Sans-serif;
   background-image: url("/assets/img/latar.png");
   background-size: cover;
+  overflow-y: auto; /* Mencegah scroll horizontal */
+  padding-bottom: auto;
 }
-
 img {
   max-width: 100%;
   height: auto;
 }
 
 @media (max-width: 900px) {
+  /* Bunga dengan delay 1 detik */
+  .bunga-jatuh-d1 {
+    position: absolute;
+    margin-top: 210rem;
+    left: 110%;
+    animation: bungaJatuhD1 5s linear 1s infinite;
+    transform-origin: center center;
+    z-index: 1;
+    -webkit-animation: bungaJatuhD1 5s linear 1s infinite;
+  }
+
+  /* Bunga dengan delay 2 detik */
+  .bunga-jatuh-d2 {
+    position: absolute;
+    margin-top: 210rem;
+    left: 110%;
+    animation: bungaJatuhD2 5s linear 2s infinite;
+    transform-origin: center center;
+  }
+
+  @keyframes bungaJatuhD1 {
+    0% {
+      top: -10%; /* Posisi awal di atas */
+      left: 110%; /* Posisi awal di kanan */
+      transform: rotate(0deg); /* Rotasi awal */
+    }
+    100% {
+      top: 150%; /*Posisiakhirdibawah*/
+      left: -30%; /*Posisiakhirdikiri*/
+      transform: rotate(360deg); /* Rotasi nonstop */
+    }
+  }
+
+  @keyframes bungaJatuhD2 {
+    0% {
+      top: -10%;
+      right: 110%;
+      transform: rotate(0deg);
+    }
+    100% {
+      top: 110%;
+      right: -10%;
+      transform: rotate(360deg);
+    }
+  }
+  /* Menambahkan class bunga-jatuh untuk gambar bunga yang akan diberi efek jatuh */
+  .bunga-jatuh {
+    /* Tentukan properti awal, misalnya posisi awal di atas dan kanan */
+    position: absolute;
+    margin-top: 210rem;
+    left: 110%;
+    animation: bungaJatuh 5s linear infinite; /* Animasi 5 detik dengan efek jatuh nonstop */
+
+    /* Tambahkan properti rotasi agar gambar berotasi selama animasi */
+    transform-origin: center center;
+  }
+
+  /* Definisikan keyframes untuk animasi */
+  @keyframes bungaJatuh {
+    0% {
+      top: -10%; /* Posisi awal di atas */
+      left: 110%; /* Posisi awal di kanan */
+      transform: rotate(0deg); /* Rotasi awal */
+    }
+    100% {
+      top: 130%; /* Posisi akhir di bawah */
+      left: -30%; /* Posisi akhir di kiri */
+      transform: rotate(360deg); /* Rotasi nonstop */
+    }
+  }
+  .telunjuk.geser-kanan {
+    transform: translateX(15rem);
+    -webkit-transform: translateX(15rem);
+    -moz-transform: translateX(15rem);
+    -ms-transform: translateX(15rem);
+    -o-transform: translateX(15rem);
+  }
+  /* Tambahkan CSS untuk animasi atau styling jika diperlukan */
+  .move-right {
+    transition: transform 10s ease-in-out;
+    -webkit-transition: transform 10s ease-in-out;
+    -moz-transition: transform 10s ease-in-out;
+    -ms-transition: transform 10s ease-in-out;
+    -o-transition: transform 10s ease-in-out;
+  }
+  .gerak {
+    animation: gerakAwan 40s linear infinite;
+  }
+  .gerak-mirror {
+    animation: gerakAwanMirror 40s linear infinite;
+    -webkit-animation: gerakAwanMirror 40s linear infinite;
+  }
+
+  @keyframes gerakAwan {
+    0%,
+    100% {
+      transform: translateX(-100%);
+      /*Posisiawaldanakhir*/
+      -webkit-transform: translateX(0);
+      -moz-transform: translateX(-100%);
+      -ms-transform: translateX(-100%);
+      -o-transform: translateX(-100%);
+      -webkit-transform: translateX(-100%);
+    }
+    50% {
+      transform: translateX(150%);
+      /*Posisitengah,bisadisesuaikan*/
+      -webkit-transform: translateX(100%);
+      -moz-transform: translateX(150%);
+      -ms-transform: translateX(150%);
+      -o-transform: translateX(150%);
+      -webkit-transform: translateX(150%);
+    }
+  }
+  @keyframes gerakAwanMirror {
+    0%,
+    100% {
+      transform: translateX(150%);
+      /*Posisiawaldanakhir*/
+      -webkit-transform: translateX(0);
+      -moz-transform: translateX(150%);
+      -ms-transform: translateX(150%);
+      -o-transform: translateX(150%);
+      -webkit-transform: translateX(150%);
+    }
+    50% {
+      transform: translateX(-100%);
+      /*Posisitengah,bisadisesuaikan*/
+      -webkit-transform: translateX(100%);
+      -moz-transform: translateX(-100%);
+      -ms-transform: translateX(-100%);
+      -o-transform: translateX(-100%);
+      -webkit-transform: translateX(-100%);
+    }
+  }
+  .latar-coklat {
+    background-image: url("/assets/img/latar-coklat.png");
+    padding-bottom: 5%;
+  }
+  .flip-right {
+    transform: scaleX(-1);
+  }
+  .wind-effect-hias {
+    animation: swayHias 8s ease-in-out infinite;
+    -webkit-animation: swayHias 8s ease-in-out infinite;
+  }
   .wind-effect {
     animation: sway 8s ease-in-out infinite;
     -webkit-animation: sway 8s ease-in-out infinite;
+  }
+  .wind-effect-s1 {
+    animation: sway 7s ease-in-out infinite;
+    -webkit-animation: sway 7s ease-in-out infinite;
+  }
+  .wind-effect-s2 {
+    animation: sway 6s ease-in-out infinite;
+    -webkit-animation: sway 6s ease-in-out infinite;
+  }
+  .wind-effect-s3 {
+    animation: sway 5s ease-in-out infinite;
+    -webkit-animation: sway 5s ease-in-out infinite;
   }
 
   @keyframes sway {
@@ -381,6 +543,23 @@ img {
       -moz-transform: rotate(7deg);
       -ms-transform: rotate(7deg);
       -o-transform: rotate(7deg);
+    }
+  }
+  @keyframes swayHias {
+    0%,
+    100% {
+      transform: rotate(125deg);
+      -webkit-transform: rotate(125deg);
+      -moz-transform: rotate(125deg);
+      -ms-transform: rotate(125deg);
+      -o-transform: rotate(125deg);
+    }
+    50% {
+      transform: rotate(135deg);
+      -webkit-transform: rotate(135deg);
+      -moz-transform: rotate(135deg);
+      -ms-transform: rotate(135deg);
+      -o-transform: rotate(135deg);
     }
   }
   .bottom-left-decoration {

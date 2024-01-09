@@ -7,24 +7,259 @@
 })(jQuery);
 
 // production
+// $(document).ready(() => {
+//   $("#button-open").click(() => {
+//     $(".awal").toggleClass("d-none");
+//     $(".isi-undangan").toggleClass("d-none");
+//     $("#staticBackdrop").modal("show");
+//     $("#my_audio")[0].play();
+//   });
+// });
+
+// testing
 $(document).ready(() => {
+  $(".awal").toggleClass("d-none");
+  $(".isi-undangan").toggleClass("d-none");
   $("#button-open").click(() => {
-    $(".awal").toggleClass("d-none");
-    $(".isi-undangan").toggleClass("d-none");
     $("#staticBackdrop").modal("show");
     $("#my_audio")[0].play();
   });
 });
 
-// testing
-// $(document).ready(() => {
-//   $(".awal").toggleClass("d-none");
-//   $(".isi-undangan").toggleClass("d-none");
-//   $("#button-open").click(() => {
-//     $("#staticBackdrop").modal("show");
-//     $("#my_audio")[0].play();
-//   });
-// });
+// save the date
+$(document).ready(function () {
+  // Meng-handle klik pada amplop tutup
+  $(".page4").on("click", function () {
+    // Menggerakkan telunjuk ke kiri
+    $(".telunjuk").removeClass("wind-effect");
+    $(".telunjuk").addClass("move-right");
+
+    // Menambahkan animasi ke kanan sebelum menghilang
+    $(".telunjuk").animate({ marginLeft: "15rem" }, 5000, function () {
+      $(".amplop-tutup").addClass("d-none");
+      $(".surat").removeClass("fa-bounce");
+      $(".amplop-buka, .amplop-buka-depan, .kertas, .text-klik").removeClass(
+        "d-none"
+      );
+    });
+  });
+
+  // Meng-handle klik pada text-klik
+  $(".text-klik").on("click", function () {
+    // Menggerakkan amplop-buka dan amplop-buka-depan ke bawah
+    $(".amplop-buka, .amplop-buka-depan").animate(
+      {
+        marginTop: "15rem",
+      },
+      1000,
+      function () {
+        // Setelah animasi ke bawah selesai, menggerakkan ke kanan
+        $(".amplop-buka, .amplop-buka-depan").animate(
+          {
+            marginLeft: "20rem",
+          },
+          1000,
+          function () {
+            // Setelah animasi selesai, menyembunyikan text-klik
+
+            // Memperbesar ukuran kertas dengan animasi
+            $(".kertas").css({
+              transform: "scale(1.8) translate(-2rem, 10rem)",
+              transition: "transform 1s",
+              "z-index": 0,
+            });
+
+            // Menyembunyikan elemen text-klik
+            $(".text-klik").addClass("d-none");
+            $(
+              ".text-klik, .amplop-buka, .amplop-buka-depan, .amplop-tutup"
+            ).css({
+              display: "none",
+            });
+
+            // Menampilkan countdown setelah kertas muncul
+            startCountdown();
+            setTimeout(function () {
+              $("#btn-waktu").removeClass("d-none");
+            }, 1000);
+            // Menampilkan gambar wayang dengan animasi
+            $("#hiasan")
+              .removeClass("d-none")
+              .css({
+                opacity: 0,
+                transform: "translateY(-40rem) rotate(0deg)",
+                top: "18rem",
+              })
+              .animate(
+                {
+                  opacity: 1,
+                  translateY: "-20rem",
+                  rotate: "394deg",
+                  left: "-2rem",
+                  width: "120%",
+                },
+                {
+                  duration: 1000,
+                  step: function (now, fx) {
+                    if (fx.prop === "rotate") {
+                      // Jika sedang melakukan animasi rotasi, atur persentase rotasi
+                      var rotation = (now / 270) * 100;
+                      $("#hiasan").css(
+                        "transform",
+                        "rotate(" + rotation + "deg)"
+                      );
+                    }
+                  },
+                }
+              );
+            $("#hiasan2")
+              .removeClass("d-none")
+              .css({
+                opacity: 0,
+                transform: "translateY(-40rem) rotate(0deg)",
+                top: "-20rem",
+              })
+              .animate(
+                {
+                  opacity: 1,
+                  translateY: "-20rem",
+                  rotate: "475deg",
+                  left: "-5rem",
+                  width: "70%",
+                  top: "-21rem",
+                },
+                {
+                  duration: 1000,
+                  step: function (now, fx) {
+                    if (fx.prop === "rotate") {
+                      // Jika sedang melakukan animasi rotasi, atur persentase rotasi
+                      var rotation = (now / 270) * 100;
+                      $("#hiasan2").css(
+                        "transform",
+                        "rotate(" + rotation + "deg)"
+                      );
+                    }
+                  },
+                }
+              );
+            $("#hiasan3")
+              .removeClass("d-none")
+              .css({
+                opacity: 0,
+                transform: "translateY(-40rem) rotate(0deg)",
+                top: "-20rem",
+              })
+              .animate(
+                {
+                  opacity: 1,
+                  translateY: "-20rem",
+                  rotate: "480deg",
+                  left: "8rem",
+                  width: "35%",
+                  top: "211rem",
+                },
+                {
+                  duration: 2000,
+                  step: function (now, fx) {
+                    if (fx.prop === "rotate") {
+                      // Jika sedang melakukan animasi rotasi, atur persentase rotasi
+                      var rotation = (now / 270) * 100;
+                      $("#hiasan3").css(
+                        "transform",
+                        "rotate(" + rotation + "deg)"
+                      );
+                    }
+                  },
+                }
+              )
+              .addClass("wind-effect");
+            setTimeout(function () {
+              $(".page4").animate({
+                "padding-bottom": "40%",
+              });
+            }, 2000);
+          }
+        );
+      }
+    );
+  });
+
+  // Fungsi untuk memulai countdown
+  function startCountdown() {
+    // Tentukan tanggal dan waktu tujuan (dalam zona waktu setempat pengguna)
+    var countDownDate = new Date("2024-01-28T06:30:00").getTime();
+
+    // Perbarui countdown setiap 1 detik
+    var x = setInterval(function () {
+      // Dapatkan waktu saat ini
+      var now = new Date().getTime();
+
+      // Hitung selisih waktu antara sekarang dan waktu tujuan
+      var distance = countDownDate - now;
+
+      // Hitung hari, jam, menit, dan detik
+      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      var hours = Math.floor(
+        (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+      );
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      // Tampilkan hasil countdown di elemen dengan id "countdown"
+      $("#countdown")
+        .css({
+          "z-index": 1,
+          top: "2rem",
+          "font-size": "25px",
+          "font-family": "forum",
+          "margin-left": "-4.5rem",
+        })
+        .html(days + " Hari")
+        .addClass("text-center");
+      $("#waktu")
+        .css({
+          "z-index": 1,
+          top: "3.5rem",
+          "font-size": "25px",
+          "font-family": "forum",
+          "margin-left": "1rem",
+        })
+        .html(hours + " Jam " + minutes + " Menit " + seconds + " Detik")
+        .addClass("text-center");
+      $("#waktu-akad")
+        .css({
+          "z-index": 1,
+          top: "8rem",
+          "font-size": "25px",
+          "font-family": "forum",
+          "margin-left": "1rem",
+        })
+        .html("Minggu, 28 Januari 2024")
+        .addClass("text-center");
+      $("#btn-waktu")
+        .css({
+          "z-index": 1,
+          top: "9rem",
+          "font-size": "20px",
+          "font-family": "forum",
+          "margin-left": "0rem",
+        })
+        .html(
+          '<i class="fa-solid  fa-calendar-days"></i> Simpan acara ke kalender'
+        )
+        .addClass("btn btn-outline-success rounded-pill default text-center");
+
+      // Jika waktu sudah habis, tampilkan pesan atau lakukan aksi tertentu
+      if (distance < 0) {
+        clearInterval(x); // Hentikan interval countdown jika waktu habis
+        $("#countdown").html("Waktu telah tiba!");
+        $("#waktu").addClass("d-none");
+        $("#waktu-akad").addClass("d-none");
+        $("#btn-waktu").addClass("d-none");
+      }
+    }, 1000); // Perbarui setiap 1 detik
+  }
+});
 
 // Set the date we're counting down to
 var countDownDate = new Date("Jan 28, 2024 06:30:00").getTime();
