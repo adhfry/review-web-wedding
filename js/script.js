@@ -29,20 +29,33 @@ $(document).ready(() => {
 // save the date
 $(document).ready(function () {
   // // Meng-handle klik pada amplop tutup
-  // $(".page4").on("click", function () {
-  //   // Menggerakkan telunjuk ke kiri
-  //   $(".telunjuk").removeClass("wind-effect");
-  //   $(".telunjuk").addClass("move-right");
+  $("#copyBtn1").on("click", function () {
+    // Tampilkan alert
+    $(".salin").removeClass("d-none");
 
-  //   // Menambahkan animasi ke kanan sebelum menghilang
-  //   $(".telunjuk").animate({ marginLeft: "15rem" }, 1000, function () {
-  //     $(".amplop-tutup").addClass("d-none");
-  //     $(".surat").removeClass("fa-bounce");
-  //     $(".amplop-buka, .amplop-buka-depan, .kertas, .text-klik").removeClass(
-  //       "d-none"
-  //     );
-  //   });
-  // });
+    // Set timeout untuk menyembunyikan salin setelah 5 detik
+    setTimeout(function () {
+      $(".salin").addClass("d-none");
+    }, 4000);
+  });
+  $("#copyBtn2").on("click", function () {
+    // Tampilkan alert
+    $(".salin").removeClass("d-none");
+
+    // Set timeout untuk menyembunyikan salin setelah 5 detik
+    setTimeout(function () {
+      $(".salin").addClass("d-none");
+    }, 4000);
+  });
+  $("#copyBtn3").on("click", function () {
+    // Tampilkan alert
+    $(".salin").removeClass("d-none");
+
+    // Set timeout untuk menyembunyikan salin setelah 5 detik
+    setTimeout(function () {
+      $(".salin").addClass("d-none");
+    }, 4000);
+  });
 
   // // Meng-handle klik pada text-klik
   // $(".text-klik").on("click", function () {

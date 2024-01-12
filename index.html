@@ -975,14 +975,20 @@
                     alt=""
                   />
                 </p>
+                <div class="alert alert-success d-none" id="konfirmasi" role="alert">
+                  <h4 class="alert-heading">Konfirmasi Sukses!</h4>
+                  <p>Terima kasih atas konfirmasi kehadiran Anda! Kami sangat senang akan kehadiran Anda dalam momen istimewa kami. Semoga kita dapat berbagi kebahagiaan bersama.</p>
+                  <hr>
+                  <p class="mb-0">Sampai jumpa di 28 Januari mendatang!</p>
+                </div>
                 <div id="app">
-                  <form action="">
+                  <form name="konfirmasi-kehadiran">
                     <input
                       type="text"
                       placeholder="Nama lengkap"
-                      required="required"
-                      aria-required="true"
-                      class="form-control"
+                      required="required" required
+                      aria-required="true" v-model="name"
+                      class="form-control" name="nama"
                     />
                     <fieldset class="form-group text-start ms-2 mt-3">
                       <legend
@@ -997,6 +1003,7 @@
                             type="radio"
                             class="custom-control-input"
                             value="yes"
+                            name="kehadiran"
                             v-model="attendance"
                             id="__BVID__159"
                           />
@@ -1008,7 +1015,7 @@
                           <input
                             type="radio"
                             class="custom-control-input"
-                            value="no"
+                            value="no" name="kehadiran"
                             v-model="attendance"
                             id="__BVID__160"
                           />
@@ -1038,8 +1045,8 @@
                           aria-required="true"
                           class="form-control"
                           fdprocessedid="le3ry1"
-                          id="__BVID__167"
-                          value="1"
+                          id="__BVID__167" value="1"
+                          name="jml_tamu"
                         />
                         <!-- ... your additional form elements ... -->
                         <small
@@ -1052,7 +1059,8 @@
                       </div>
                     </fieldset>
                     <button
-                      type="button"
+                      type="submit"
+                      id="tombolSubmit"
                       class="btn text-light rounded-3 mt-3"
                       style="background-color: #26282b"
                       @click="submitResponse"
@@ -1081,6 +1089,10 @@
                         </g>
                       </svg>
                       Kirim Respon
+                    </button>
+                    <button class="btn text-light d-none rounded-3 mt-3" id="loading" style="background-color: #26282b" type="button" disabled>
+                      <span class="spinner-grow spinner-grow-sm" aria-hidden="true"></span>
+                      <span role="status">Loading...</span>
                     </button>
                   </form>
                 </div>
@@ -1135,7 +1147,11 @@
         ></path>
       </svg>
       <!-- Page 6 -->
+      <div class="alert salin d-none alert-secondary position-absolute z-2" role="alert">
+        Berhasil Menyalin Teks!
+      </div>
       <div class="page6 latar-coklat" style="margin-top: -8rem">
+
         <div
           class="hadiah-filter text-center position-relative"
           style="z-index: 1"
@@ -1215,10 +1231,11 @@
           </div>
         </div>
       </div>
+      
       <!-- Modal -->
       <div
         class="modal fade"
-        style="z-index: 99999;"
+        style="z-index: 9999;"
         id="staticBackdrop5"
         data-bs-backdrop="static"
         data-bs-keyboard="false"
@@ -1230,7 +1247,7 @@
           <div class="modal-content">
             <div class="modal-header">
               <h1 class="modal-title fs-5" id="staticBackdropLabel">
-                Modal title
+                Kirim hadiah
               </h1>
               <button
                 type="button"
@@ -1240,7 +1257,7 @@
               ></button>
             </div>
             <div class="modal-body">
-              <p >Transfer langsung ke rekening di bawah ini:</p>
+              <p >Transfer langsung ke rekening/DANA di bawah ini:</p>
               <div class="row">
                 <div class="col-lg-6 col-12">
                     <div class="card card-settings mb-3">
@@ -1248,10 +1265,10 @@
                             <p class="card-text">
                                 <div class="row">
                                     <div class="col-12">
-                                        <h5><b>BCA</b></h5>
+                                        <h5><b>Bank Muamalat</b></h5>
                                         <p>
-                                            <b>1212121212</b>
-                                            <a id="copyBtn1" data-clipboard-text="1212121212" style="z-index: 9999;" target="_self"
+                                            <b>7730007691</b>
+                                            <a id="copyBtn1" data-bs-dismiss="modal" data-clipboard-text="7730007691" target="_self"
                                                 class="clip-btn">
                                                 <svg viewBox="0 0 16 16" width="1em" height="1em" focusable="false"
                                                     role="img" aria-label="Copy to clipboard"
@@ -1264,7 +1281,7 @@
                                                     </g>
                                                 </svg>
                                             </a>
-                                            <br />a/n Eka Syafitry Dewi
+                                            <br />a/n Oppie Wahyu Wulandari
                                         </p>
                                     </div>
                                 </div>
@@ -1278,11 +1295,10 @@
                             <p class="card-text">
                                 <div class="row">
                                     <div class="col-12">
-                                        <h5><b>Bank Central Asia (BCA)</b></h5>
+                                        <h5><b>Dana <img src="https://assets.jalantikus.com/assets/cache/40/40/apps/2019/04/26/dana-1dd40.png" width="15" alt=""></b></h5>
                                         <p>
-                                            <b>12132131231</b>
-                                            
-                                            <a id="copyBtn2" data-clipboard-text="12132131231" style="z-index: 19999;" target="_self"
+                                            <b>081936447711</b>
+                                            <a id="copyBtn3" data-clipboard-text="081936447711"   data-bs-dismiss="modal" target="_self"
                                                 class="clip-btn">
                                                 <svg viewBox="0 0 16 16" width="1em" height="1em" focusable="false"
                                                     role="img" aria-label="Copy to clipboard"
@@ -1295,12 +1311,47 @@
                                                     </g>
                                                 </svg>
                                             </a>
-                                            <br />a/n Our Wedding
+                                            <br />a/n Ahmad Iqbal
                                         </p>
-                                        <p>
+                                        <p class="text-center">
                                             <img
-                                                src="https://api.our-wedding.link/uploads/73af8780-7520-11ed-b2a4-d73ec9823164.jpg"
-                                                alt="" style="width: 100%;">
+                                                src="/assets/img/dana-iqbal.png"
+                                                alt="" style="width: 80%;">
+                                        </p>
+                                    </div>
+                                </div>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-12">
+                    <div class="card card-settings mb-3">
+                        <div class="card-body">
+                            <p class="card-text">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <h5><b>Dana <img src="https://assets.jalantikus.com/assets/cache/40/40/apps/2019/04/26/dana-1dd40.png" width="15" alt=""></b></h5>
+                                        <p>
+                                            <b>087850286178</b>
+                                            <a id="copyBtn2" data-clipboard-text="087850286178"   data-bs-dismiss="modal" target="_self"
+                                                class="clip-btn">
+                                                <svg viewBox="0 0 16 16" width="1em" height="1em" focusable="false"
+                                                    role="img" aria-label="Copy to clipboard"
+                                                    xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                    class="bi-files b-icon bi">
+                                                    <g>
+                                                        <path
+                                                            d="M13 0H6a2 2 0 0 0-2 2 2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2 2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm0 13V4a2 2 0 0 0-2-2H5a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1zM3 4a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4z">
+                                                        </path>
+                                                    </g>
+                                                </svg>
+                                            </a>
+                                            <br />a/n Oppie Wahyu Wulandari
+                                        </p>
+                                        <p class="text-center">
+                                            <img
+                                                src="/assets/img/dana-oppie.png"
+                                                alt="" style="width: 80%;">
                                         </p>
                                     </div>
                                 </div>
@@ -1312,6 +1363,7 @@
           </div>
         </div>
       </div>
+      
       <!-- End Page 6 -->
       <!-- Wave -->
       <svg
@@ -1362,23 +1414,62 @@
 <script>
   new ClipboardJS("#copyBtn1");
   new ClipboardJS("#copyBtn2");
+  new ClipboardJS("#copyBtn3");
 </script>
     <!-- Vue.js -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
     <script>
-      new Vue({
+       // Sertakan kode Vue.js di sini
+       new Vue({
         el: "#app",
         data: {
-          attendance: "", // Menyimpan nilai radio yang dipilih
+            attendance: "", // Menyimpan nilai radio yang dipilih
+            name: "", // Menyimpan nama
         },
         methods: {
-          submitResponse() {
-            // Fungsi ini akan dipanggil saat tombol Kirim Respon diklik
-            // Anda dapat menambahkan logika pengiriman respon atau melakukan apa pun yang diperlukan
-            console.log("Response submitted:", this.attendance);
-          },
+            submitResponse(e) {
+              // Tambahkan ini untuk mencegah pembaruan halaman
+            e.preventDefault();
+
+            // Periksa apakah nama sudah diisi
+            if (!this.name.trim()) {
+              // Jika tidak, tampilkan pesan atau lakukan tindakan yang sesuai
+              alert("Nama harus diisi sebelum mengirimkan formulir.");
+              return;
+          }
+                 // Tombol dan elemen loading
+            const submitButton = document.getElementById("tombolSubmit");
+            const loadingElement = document.getElementById("loading");
+
+            // Tombol submit menjadi hidden dan loading ditampilkan
+            submitButton.classList.add("d-none");
+            loadingElement.classList.remove("d-none");
+
+            
+
+            // Tambahkan logika untuk mengirim data ke Google Script di sini
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbwVTj4atIHjSN-TklhBBC6HrCp4one-y-apxpxEVwTmkZa43gr__6fKUQvlgMB-lhI/exec';
+            const form = document.forms['konfirmasi-kehadiran'];
+
+            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+                .then(response => {
+                    console.log('Success!', response);
+
+                    // Response sukses, lakukan perubahan pada elemen
+                    loadingElement.classList.add("d-none");
+                    document.getElementById("konfirmasi").classList.remove("d-none");
+                    document.getElementById("app").classList.add("d-none");
+                })
+                .catch(error => {
+                    console.error('Error!', error.message);
+
+                    // Response error, kembalikan elemen ke kondisi awal
+                    submitButton.classList.remove("d-none");
+                    loadingElement.classList.add("d-none");
+                });
+            },
         },
-      });
+    });
     </script>
     <!-- Bootstrap -->
     <script

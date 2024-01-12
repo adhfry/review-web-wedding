@@ -359,6 +359,7 @@ body {
   background-repeat: repeat-y;
   overflow-y: auto; /* Mencegah scroll horizontal */
   padding-bottom: auto;
+  /* padding-bottom: 100%; */
 }
 img {
   max-width: 100%;
