@@ -35,7 +35,7 @@ $(document).ready(function () {
     $(".telunjuk").addClass("move-right");
 
     // Menambahkan animasi ke kanan sebelum menghilang
-    $(".telunjuk").animate({ marginLeft: "15rem" }, 5000, function () {
+    $(".telunjuk").animate({ marginLeft: "15rem" }, 1000, function () {
       $(".amplop-tutup").addClass("d-none");
       $(".surat").removeClass("fa-bounce");
       $(".amplop-buka, .amplop-buka-depan, .kertas, .text-klik").removeClass(
@@ -51,14 +51,14 @@ $(document).ready(function () {
       {
         marginTop: "15rem",
       },
-      1000,
+      500,
       function () {
         // Setelah animasi ke bawah selesai, menggerakkan ke kanan
         $(".amplop-buka, .amplop-buka-depan").animate(
           {
             marginLeft: "20rem",
           },
-          1000,
+          500,
           function () {
             // Setelah animasi selesai, menyembunyikan text-klik
 
@@ -156,7 +156,7 @@ $(document).ready(function () {
                   rotate: "480deg",
                   left: "8rem",
                   width: "35%",
-                  top: "221.5rem",
+                  top: "211.5rem",
                 },
                 {
                   duration: 2000,
