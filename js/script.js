@@ -244,7 +244,7 @@ $(document).ready(function () {
           top: "8rem",
           "font-size": "24px",
           "font-family": "forum",
-          "margin-left": "8.2rem",
+          "margin-left": "8.5rem",
         })
         .html("28 Januari 2024")
         .addClass("text-center");
