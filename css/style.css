@@ -355,7 +355,8 @@ body {
 body {
   font-family: forum, Helvetica, Sans-serif;
   background-image: url("/assets/img/latar.png");
-  background-size: cover;
+  background-size: contain;
+  background-repeat: repeat-y;
   overflow-y: auto; /* Mencegah scroll horizontal */
   padding-bottom: auto;
 }
