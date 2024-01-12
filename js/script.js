@@ -156,7 +156,7 @@ $(document).ready(function () {
                   rotate: "480deg",
                   left: "8rem",
                   width: "35%",
-                  top: "211rem",
+                  top: "221.5rem",
                 },
                 {
                   duration: 2000,
