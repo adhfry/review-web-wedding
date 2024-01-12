@@ -7,24 +7,24 @@
 })(jQuery);
 
 // production
-// $(document).ready(() => {
-//   $("#button-open").click(() => {
-//     $(".awal").toggleClass("d-none");
-//     $(".isi-undangan").toggleClass("d-none");
-//     $("#staticBackdrop").modal("show");
-//     $("#my_audio")[0].play();
-//   });
-// });
-
-// testing
 $(document).ready(() => {
-  $(".awal").toggleClass("d-none");
-  $(".isi-undangan").toggleClass("d-none");
   $("#button-open").click(() => {
+    $(".awal").toggleClass("d-none");
+    $(".isi-undangan").toggleClass("d-none");
     $("#staticBackdrop").modal("show");
     $("#my_audio")[0].play();
   });
 });
+
+// testing
+// $(document).ready(() => {
+//   $(".awal").toggleClass("d-none");
+//   $(".isi-undangan").toggleClass("d-none");
+//   $("#button-open").click(() => {
+//     $("#staticBackdrop").modal("show");
+//     $("#my_audio")[0].play();
+//   });
+// });
 
 // save the date
 $(document).ready(function () {
