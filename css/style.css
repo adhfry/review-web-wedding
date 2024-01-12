@@ -355,11 +355,14 @@ body {
 body {
   font-family: forum, Helvetica, Sans-serif;
   background-image: url("/assets/img/latar.png");
-  background-size: contain;
+  background-size: cover;
   background-repeat: repeat-y;
   overflow-y: auto; /* Mencegah scroll horizontal */
   padding-bottom: auto;
   /* padding-bottom: 100%; */
+}
+.background-contain {
+  background-size: contain !important;
 }
 img {
   max-width: 100%;

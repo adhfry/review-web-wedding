@@ -9,9 +9,17 @@
 // production
 $(document).ready(() => {
   $("#button-open").click(() => {
+    // Toggle class pada elemen .awal dan .isi-undangan
     $(".awal").toggleClass("d-none");
     $(".isi-undangan").toggleClass("d-none");
+
+    // Menambah atau menghapus properti CSS pada body
+    $("body").toggleClass("background-contain");
+
+    // Menampilkan modal
     $("#staticBackdrop").modal("show");
+
+    // Memainkan audio
     $("#my_audio")[0].play();
   });
 });
